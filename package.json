@@ -1,0 +1,30 @@
+{
+  "name": "pinger",
+  "version": "1.0.0",
+  "description": "A demonstration utility for get runtime information",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nyc mocha",
+    "http_test": "mocha test/http-tests.js",
+    "start": "node server.js",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test && node testdocserver.js",
+    "docker": "mocha test/docker-tests.js"
+  },
+  "author": "Bob Reselman <reselbob@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2",
+    "globby": "^10.0.1",
+    "lnk": "^1.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "uuid": "^3.3.3"
+  }
+}
