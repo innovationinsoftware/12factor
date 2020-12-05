@@ -14,7 +14,6 @@ describe('HTTP Tests: ', () => {
     });
 
     it('Can access GET basic information', function(done){
-        //Go get all the lists
         supertest(server)
             .get('/')
             .set('Accept', 'application/json')
@@ -34,14 +33,47 @@ describe('HTTP Tests: ', () => {
             .catch(done);
     });
 
+    it('Random message works', async function(){
+        let message1;
+        let message2;
+        message1 = await supertest(server)
+            .get('/')
+            .set('Accept', 'application/json')
+            .then((res) => {
+                expect(res.body.randomMessage).to.be.a('string');
+                return res.body.randomMessage
+            });
+        message2 = await supertest(server)
+            .get('/')
+            .set('Accept', 'application/json')
+            .then((res) => {
+                expect(res.body.randomMessage).to.be.a('string');
+                return res.body.randomMessage
+            });
+        expect(message1).to.not.equals(message2);
+    });
+
     it('Runtime ports match', function(done){
-        //Go get all the lists
+
         supertest(server)
             .get('/')
             .set('Accept', 'application/json')
             .then((res) => {
                 expect(envConfig.parsed.PINGER_PORT).equals(res.body.PINGER_PORT);
-                console.log(`Runtine PINGER_PORT env OK on ${envConfig.parsed.PINGER_PORT}`)
+                console.log(`Runtime PINGER_PORT env OK on ${envConfig.parsed.PINGER_PORT}`)
+                done();
+            })
+            .catch(done);
+    });
+
+    it('CorrelationId property exists', function(done){
+
+        supertest(server)
+            .get('/')
+            .set('Accept', 'application/json')
+            .then((res) => {
+                expect(res.body.correlationId).to.be.a('string');
+                console.log(`The correlationId is present with a value of: ${res.body.correlationId}`)
                 done();
             })
             .catch(done);
