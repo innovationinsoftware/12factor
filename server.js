@@ -1,8 +1,7 @@
 require('dotenv').config();
 const http = require('http');
-const port = process.env.PINGER_PORT || 3000;
 const uuidv4 = require('uuid/v4');
-
+const port = process.env.PINGER_PORT || 3000;
 
 const handleRequest = (request, response)  => {
     response.setHeader("Content-Type", "application/json");
@@ -17,6 +16,7 @@ const handleRequest = (request, response)  => {
 };
 
 const server = http.createServer(handleRequest);
+
 server.listen(port, () => {
     console.log(`API Server is listening on port ${port}`);
 });
