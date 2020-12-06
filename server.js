@@ -3,8 +3,7 @@ const http = require('http');
 const uuidv4 = require('uuid/v4');
 const faker = require('faker');
 const port = process.env.PINGER_PORT || 3000;
-const isAdmin = process.env.PINGER_ADMIN || false;
-
+const isAdmin = (process.env.PINGER_ADMIN === "true") || (process.env.PINGER_ADMIN === "TRUE");
 
 /*
 This is a utility function that gathers environment information
