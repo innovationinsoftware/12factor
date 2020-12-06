@@ -3,6 +3,28 @@ const http = require('http');
 const uuidv4 = require('uuid/v4');
 const faker = require('faker');
 const port = process.env.PINGER_PORT || 3000;
+const isAdmin = process.env.PINGER_ADMIN || false;
+
+
+/*
+This is a utility function that gathers environment information
+at runtime
+ */
+const getRuntimeInfo = () =>{
+    let networkInfo;
+    try {
+        networkInfo = require('os').networkInterfaces();
+    } catch (e) {
+        networkInfo = 'UNKNOWN_OR_INACCESSIBLE';
+    }
+    const vers = process.env.CURRENT_VERSION || 'UNDEFINED';
+    return {
+        APIVersion: vers,
+        processId: process.pid,
+        memoryUsage: process.memoryUsage(),
+        networkInfo
+    };
+}
 
 const handleRequest = (request, response)  => {
     response.setHeader("Content-Type", "application/json");
@@ -16,6 +38,14 @@ const handleRequest = (request, response)  => {
     rslt.PINGER_PORT = port;
     rslt.randomMessage = faker.lorem.words(5);
     rslt.correlationId = correlationId;
+
+    if(isAdmin){
+        const obj = getRuntimeInfo();
+        rslt.APIVersion = obj.APIVersion;
+        rslt.processId = obj.processId;
+        rslt.memoryUsage = obj.memoryUsage;
+        rslt.networkInfo = obj.networkInfo
+    }
 
     const str = JSON.stringify(rslt, null, 4);
 

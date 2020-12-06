@@ -78,4 +78,15 @@ describe('HTTP Tests: ', () => {
             })
             .catch(done);
     });
+
+    it('Can run as admin', function(done){
+        supertest(server)
+            .get('/')
+            .set('Accept', 'application/json')
+            .then((res) => {
+                expect(res.body.networkInfo).to.be.a('object');
+                done();
+            })
+            .catch(done);
+    });
 });
