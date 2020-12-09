@@ -26,6 +26,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "faker": "^5.1.0",
+    "pino": "^6.7.0",
+    "pino-http-send": "^0.4.2",
     "uuid": "^3.3.3"
   }
 }

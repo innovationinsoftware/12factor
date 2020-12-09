@@ -2,8 +2,16 @@ require('dotenv').config();
 const http = require('http');
 const uuidv4 = require('uuid/v4');
 const faker = require('faker');
+const {logger} = require('./logger');
+
 const port = process.env.PINGER_PORT || 3000;
 const isAdmin = (process.env.PINGER_ADMIN === "true") || (process.env.PINGER_ADMIN === "TRUE");
+
+if(!process.env.COLLECTOR_HOSTNAME) throw new Error('The required environment variable,COLLECTOR_HOSTNAME is not set');
+if(!process.env.COLLECTOR_PORT) throw new Error('The required environment variable,COLLECTOR_PORT is not set');
+
+const collectorHostname = process.env.COLLECTOR_HOSTNAME;
+const collectorPort = process.env.COLLECTOR_PORT;
 
 /*
 This is a utility function that gathers environment information
@@ -25,7 +33,8 @@ const getRuntimeInfo = () =>{
     };
 }
 
-const handleRequest = (request, response)  => {
+const handleRequest = async (request, response)  => {
+    logger.info(request);
     response.setHeader("Content-Type", "application/json");
 
     const correlationId = uuidv4();
@@ -45,22 +54,23 @@ const handleRequest = (request, response)  => {
         rslt.memoryUsage = obj.memoryUsage;
         rslt.networkInfo = obj.networkInfo
     }
-
+    //logger.info(rslt)
     const str = JSON.stringify(rslt, null, 4);
 
     response.writeHead(200);
     response.end(str);
-    console.log(rslt);
+    logger.info(response)
+    //console.log(rslt);
 };
 
 const server = http.createServer(handleRequest);
 
 server.listen(port, () => {
-    console.log(`API Server is listening on port ${port}`);
+    logger.info(`Pinger is listening on port ${port}`);
 });
 
 const shutdown = () => {
-    console.log(`Server shutting down at ${new Date()}`);
+    logger.info(`Pinger is shutting down at ${new Date()}`);
     server.close();
 };
 
