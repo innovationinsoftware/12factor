@@ -2,9 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const uuidv4 = require('uuid/v4');
 
-const port = process.env.COLLECTOR_PORT || 4000;
-const isAdmin = (process.env.COLLECTOR__ADMIN === "true") || (process.env.COLLECTOR_ADMIN === "TRUE");
-const collectorHost = process.env.COLLECTOR_DELEGATE_HOSTNAME || "localhost";
+process.env.COLLECTOR_DELEGATE_HOSTNAME || "localhost";
 const collectorPort = process.env.COLLECTOR_DELEGATE_PORT || 6379;
 
 const {write, read} = require('./datastore')

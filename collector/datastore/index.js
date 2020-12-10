@@ -1,5 +1,9 @@
+const host = process.env.COLLECTOR_DELEGATE_HOSTNAME || "localhost";
+let port = process.env.COLLECTOR_DELEGATE_PORT || 6379;
+if(process.env.COLLECTOR_DELEGATE_PORT) port = parseInt(process.env.COLLECTOR_DELEGATE_PORT);
+
 const redis = require("redis");
-const client = redis.createClient();
+const client = redis.createClient({host,port});
 const { promisify } = require("util");
 const setAsync = promisify(client.set).bind(client);
 const getAsync = promisify(client.get).bind(client);
