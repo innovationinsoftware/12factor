@@ -66,11 +66,11 @@ const handleRequest = async (request, response)  => {
 const server = http.createServer(handleRequest);
 
 server.listen(port, () => {
-    logger.info(`Pinger is listening on port ${port}`);
+    console.log(`Pinger is listening on port ${port} at ${new Date()}`);
 });
 
 const shutdown = () => {
-    logger.info(`Pinger is shutting down at ${new Date()}`);
+    console.log(`Pinger is shutting down at ${new Date()}`);
     server.close();
 };
 
