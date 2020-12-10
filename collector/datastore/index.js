@@ -34,7 +34,6 @@ const read = async (key) =>{
     result.key = key;
     console.log(result);
     return result;
-
 }
 
 module.exports = {write, read};

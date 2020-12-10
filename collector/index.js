@@ -2,12 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const uuidv4 = require('uuid/v4');
 
-process.env.COLLECTOR_DELEGATE_HOSTNAME || "localhost";
-const collectorPort = process.env.COLLECTOR_DELEGATE_PORT || 6379;
-
 const {write, read} = require('./datastore')
-
-
 
 const app = express();
 // Handling JSON data
