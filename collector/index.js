@@ -12,13 +12,7 @@ const app = express();
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded({extended:true})); // to support URL-encoded bodies
 
-// our API
-// GET - /api
-app.get("/api", (request, response) => {
-
-});
-
-// POST - /api
+// POST
 app.post("/", async (request, response) => {
     const correlationId = request.header('x-correlation-id') || uuidv4();
     // our unix timestamp
@@ -33,6 +27,7 @@ app.post("/", async (request, response) => {
     console.log(rslt);
 })
 
+//GET
 app.get("/", async (request, response) => {
     const correlationId = request.header('x-correlation-id') || uuidv4();
     const key = request.query.key
