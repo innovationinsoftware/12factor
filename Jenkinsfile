@@ -16,30 +16,18 @@ pipeline {
                 sh "npm test"
             }
         }
-        stage('build 2: container image') {
+        stage('release') {
             steps {
                 sh "docker build -t secretagent:v1 ."
+                sh "docker tag secretagent:v1 localhost:5000/secretagent:v1"
+                sh "docker push localhost:5000/secretagent:v1"
             }
         }
         stage('run') {
             steps {
-                sh "docker stop mysecretagent || true && docker rm mysecretagent || true"
-                sh "docker run --name mysecretagent -d -p 3050:3050 secretagent:v1"
-            }
-        }
-        stage('get local config') {
-            steps {
-                script {
-                    def MYIP = sh "ifconfig eth0 | awk '/inet addr/{print substr(\$2,6)}'"
-                    echo MYIP
-                }
-            }
-        }
-        stage('exercise') {
-            steps {
-                sh "ping -c 1 localhost"
-                sh "ifconfig"
-                sh "curl http://localhost:3050"
+                sh "docker stop mysecretagent || true && docker rm -f mysecretagent || true"
+                sh "docker run --name mysecretagent -d -p 3060:3050 localhost:5000/secretagent:v1"
+                sh "curl http://localhost:3060"
             }
         }
     }
