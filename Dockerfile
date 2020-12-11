@@ -4,4 +4,4 @@ COPY index.js .
 COPY package.json .
 RUN npm install --only-production
 EXPOSE 3050
-CMD ["node", "index.jgits"]
+CMD ["node", "index.js"]
