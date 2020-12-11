@@ -7,7 +7,6 @@ pipeline {
                 git branch: '5-build-release-run.0.0.1',
                     url: 'https://github.com/innovationinsoftware/12factor.git'
                 sh "npm install"
-                sh "apt update"
             }
         }
         stage('test') {
