@@ -21,6 +21,7 @@ pipeline {
                 sh "docker build -t secretagent:v1 ."
                 sh "docker tag secretagent:v1 localhost:5000/secretagent:v1"
                 sh "docker push localhost:5000/secretagent:v1"
+                echo 'Secret Society is in the localhost registry. You are now ready to run'
             }
         }
     }
