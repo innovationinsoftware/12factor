@@ -23,12 +23,5 @@ pipeline {
                 sh "docker push localhost:5000/secretagent:v1"
             }
         }
-        stage('run') {
-            steps {
-                sh "docker stop mysecretagent || true && docker rm -f mysecretagent || true"
-                sh "docker run --name mysecretagent -d -p 3060:3050 localhost:5000/secretagent:v1"
-                sh "curl http://localhost:3060"
-            }
-        }
     }
 }
