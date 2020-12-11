@@ -4,15 +4,17 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'this is build'
+                git branch: '5-build-release-run.0.0.1',
+                    url: 'https://github.com/innovationinsoftware/12factor.git'
+                sh "npm install"
+            }
+        }
+        stage('test') {
+            steps {
+                sh "npm test"
             }
         }
         stage('release') {
-            steps {
-                echo 'this is release'
-            }
-        }
-        stage('run') {
             steps {
                 echo 'this is run'
             }
