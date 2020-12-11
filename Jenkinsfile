@@ -8,7 +8,6 @@ pipeline {
                     url: 'https://github.com/innovationinsoftware/12factor.git'
                 sh "npm install"
                 sh "apt update"
-                sh "apt install net-tools -y"
             }
         }
         stage('test') {
