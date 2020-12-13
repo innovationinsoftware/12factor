@@ -9,14 +9,14 @@
   "author": "Bob Reselman <reselbob@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6",
     "jaeger-client": "^3.10.0",
-    "opentracing": "latest"
+    "opentracing": "latest",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.2.0",
-    "supertest": "^4.0.2"
+    "mocha": "^8.2.1",
+    "supertest": "^6.0.1"
   }
 }
