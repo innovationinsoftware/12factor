@@ -1,5 +1,6 @@
 const http = require('http');
 const port = process.env.APP_PORT || 3000;
+const restaurantPort = process.env.RESTAURANT_PORT || 3000;
 
 const customer = 'Friendly Shopper';
 
@@ -12,7 +13,7 @@ const handleRequest = (request, response)  => {
 
     const service = sample(services);
 
-    http.get(`http://${service}:${port}`, (resp) => {
+    http.get(`http://${service}:${restaurantPort}`, (resp) => {
         let data = '';
 
         // A chunk of data has been recieved.

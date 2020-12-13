@@ -2,20 +2,28 @@ version: '3'
 services:
   customer:
     build: ./customer
+    environment:
+      - RESTAURANT_PORT=3001
     ports:
       - "4000:3000"
     networks:
       - westfield_mall
   burgerqueen:
+    environment:
+      - APP_PORT=3001
     build: ./burgerqueen
     networks:
       - westfield_mall
   hobos:
     build: ./hobos
+    environment:
+      - APP_PORT=3001
     networks:
       - westfield_mall
   iowafried:
     build: ./iowafried
+    environment:
+      - APP_PORT=3001
     networks:
       - westfield_mall
 networks:
