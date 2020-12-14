@@ -13,7 +13,7 @@ services:
   burgerqueen:
     environment:
       - APP_PORT=3001
-    build: localhost:5000/burgerqueen
+    image: localhost:5000/burgerqueen
     networks:
       - westfield_mall
   hobos:
