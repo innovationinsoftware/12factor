@@ -1,7 +1,7 @@
 version: '3'
 services:
   customer:
-    image: localhost:5000//customer
+    image: localhost:5000/customer
     environment:
       - APP_PORT=3000
       - RESTAURANT_PORT=3001
@@ -23,7 +23,7 @@ services:
     networks:
       - westfield_mall
   iowafried:
-    image: localhost:5000//iowafried
+    image: localhost:5000/iowafried
     environment:
       - APP_PORT=3001
     networks:
