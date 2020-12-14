@@ -5,7 +5,7 @@ const restaurantPort = process.env.RESTAURANT_PORT || 3000;
 if(!process.env.RESTAURANT_DNS_NAMES)throw new error('The required environment variable, RESTAURANT_DNS_NAMES is not defined.');
 
 //parse out the services into an array
-const services = JSON.parse(process.env.RESTAURANT_DNS_NAMES.split(','));
+const services = process.env.RESTAURANT_DNS_NAMES.split(',');
 
 
 const customer = 'Friendly Shopper';
