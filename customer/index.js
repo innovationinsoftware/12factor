@@ -2,10 +2,15 @@ const http = require('http');
 const port = process.env.APP_PORT || 3000;
 const restaurantPort = process.env.RESTAURANT_PORT || 3000;
 
+if(!RESTAURANTS_DNS_NAMES)throw new error('The required environment variable, RESTAURANTS_DNS_NAMES is not defined.');
+
+const services = JSON.parse(process.env.RESTAURANTS_DNS_NAMES);
+
+
 const customer = 'Friendly Shopper';
 
-const DEFAULT_SERVICES = ['burgerqueen', 'hobos', 'iowafried'];
-let services = DEFAULT_SERVICES;
+//const DEFAULT_SERVICES = ['burgerqueen', 'hobos', 'iowafried'];
+//let services = DEFAULT_SERVICES;
 
 const sample = (items) => {return items[Math.floor(Math.random()*items.length)];};
 
