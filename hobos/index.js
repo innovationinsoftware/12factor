@@ -29,7 +29,7 @@ const server = http.createServer((request, response) => {
     const order = sample(foods) ;
     const res = {restaurant, order}
     logger.info({res});
-    const str = JSON.stringify({res});
+    const str = JSON.stringify({restaurant, order});
     response.setHeader("Content-Type", "application/json");
     response.writeHead(200);
     response.end(str);
