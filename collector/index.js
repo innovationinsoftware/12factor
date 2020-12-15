@@ -13,36 +13,28 @@ app.use(express.urlencoded({extended:true})); // to support URL-encoded bodies
 
 // POST
 app.post("/", async (request, response) => {
-    /*
     const correlationId = request.header('x-correlation-id') || uuidv4();
     // our unix timestamp
     const unixTimeCreated = new Date().getTime();
     // add our unix time as a "created" property and add it to our request.body
     const newData = Object.assign({"created": unixTimeCreated}, request.body);
     newData.correlationId = correlationId;
-    const rslt = await write(newData);
+    //const rslt = await write(newData);
 
     response.writeHead(200);
-    response.end(JSON.stringify(rslt));
-    console.log(rslt);
-     */
+    response.end(JSON.stringify({datawrite:newData}));
+    console.log({datawrite:newData});
 })
 
 //GET
 app.get("/", async (request, response) => {
-    /*
     const correlationId = request.header('x-correlation-id') || uuidv4();
-    const key = request.query.key
-    const rslt = await read(key);
+    //const key = request.query.key
+    //const rslt = await read(key);
     response.writeHead(200);
-    response.end(JSON.stringify(rslt));
-    console.log(rslt);
-
-     */
+    response.end(JSON.stringify({dataread:correlationId}));
+    console.log({dataread:correlationId});
 })
-
-
-
 
 const server = app.listen(port, () => {
     console.log(`Collector Server started on port ${port} at ${new Date()}`)
