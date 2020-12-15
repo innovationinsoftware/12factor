@@ -5,7 +5,7 @@ const {logger} = require('./logger');
 const restaurant = 'Burger Queen';
 
 if(!process.env.COLLECTOR_PORT)throw Error(`The required environment variable, COLLECTOR_PORT is not defined in ${restaurant}.`);
-if(!process.env.COLLECTOR_HOSTNAME)throw Error(`The required environment variable, COLLECTOR_HOSTNAME is not defined in${restaurant}.`);
+if(!process.env.COLLECTOR_HOSTNAME)throw Error(`The required environment variable, COLLECTOR_HOSTNAME is not defined in ${restaurant}.`);
 
 
 const foods = ['burger', 'fries', 'whooper', 'onion rings']

@@ -5,7 +5,7 @@ const port = process.env.APP_PORT || 3000;
 const restaurant = 'Iowa Fried Chicken';
 
 if(!process.env.COLLECTOR_PORT)throw Error(`The required environment variable, COLLECTOR_PORT is not defined in ${restaurant}.`);
-if(!process.env.COLLECTOR_HOSTNAME)throw Error(`The required environment variable, COLLECTOR_HOSTNAME is not defined in${restaurant}.`);
+if(!process.env.COLLECTOR_HOSTNAME)throw Error(`The required environment variable, COLLECTOR_HOSTNAME is not defined in ${restaurant}.`);
 
 
 
