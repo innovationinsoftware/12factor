@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: hobos
-          image:localhost:5000/hobos
+          image: localhost:5000/hobos
           env:
             - name: APP_PORT
               value: "3000"
