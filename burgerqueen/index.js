@@ -2,8 +2,8 @@ const http = require('http');
 const port = process.env.APP_PORT || 3000;
 const {logger} = require('./logger');
 
-if(!process.env.COLLECTOR_PORT)throw Error('The required environment variable, COLLECTOR_PORT is not defined.')
-const port = process.env.COLLECTOR_PORT;
+if(!process.env.COLLECTOR_PORT)throw Error('The required environment variable, COLLECTOR_PORT is not defined.');
+if(!process.env.COLLECTOR_HOSTNAME)throw Error('The required environment variable, COLLECTOR_HOSTNAME is not defined.');
 
 const restaurant = 'Burger Queen';
 

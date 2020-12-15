@@ -2,6 +2,9 @@ const http = require('http');
 const {logger} = require('./logger');
 const port = process.env.APP_PORT || 3000;
 
+if(!process.env.COLLECTOR_PORT)throw Error('The required environment variable, COLLECTOR_PORT is not defined.');
+if(!process.env.COLLECTOR_HOSTNAME)throw Error('The required environment variable, COLLECTOR_HOSTNAME is not defined.');
+
 const restaurant = 'Howard Bonsons';
 
 const foods = ['fried shrimp', 'grilled cheese', 'double burger', 'soda and fries']
