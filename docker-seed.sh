@@ -55,3 +55,5 @@ docker build -t collector .
 docker tag iowafried localhost:5000/collector
 
 docker push localhost:5000/collector
+
+cd ..
