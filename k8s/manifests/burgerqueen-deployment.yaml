@@ -18,11 +18,11 @@ spec:
         - name: burgerqueen
           image:localhost:5000/burgerqueen
           env:
-            - name: "APP_PORT"
-              value: 3000
-            - name: "COLLECTOR_HOSTNAME"
-              value: collector
-            - name: "COLLECTOR_PORT"
-              value: 80
+            - name: APP_PORT
+              value: "3000"
+            - name: COLLECTOR_HOSTNAME
+              value: "collector"
+            - name: COLLECTOR_PORT
+              value: "80"
           ports:
           - containerPort: 3000

@@ -18,15 +18,15 @@ spec:
         - name: customer
           image: localhost:5000/customer
           env:
-            - name: "APP_PORT"
-              value: 3000
-            - name: "RESTAURANT_PORT"
-              value: 80
-            - name: "RESTAURANT_DNS_NAMES"
-              value: burgerqueen,hobos,iowafried
-            - name: "COLLECTOR_HOSTNAME"
-              value: collector
-            - name: "COLLECTOR_PORT"
-              value: 80
+            - name: APP_PORT
+              value: "3000"
+            - name: RESTAURANT_PORT
+              value: "80"
+            - name: RESTAURANT_DNS_NAMES
+              value: "burgerqueen,hobos,iowafried"
+            - name: COLLECTOR_HOSTNAME
+              value: "collector"
+            - name: COLLECTOR_PORT
+              value: "80"
           ports:
           - containerPort: 3000

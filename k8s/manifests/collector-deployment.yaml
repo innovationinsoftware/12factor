@@ -18,11 +18,11 @@ spec:
         - name: collector
           image:localhost:5000/collector
           env:
-          - name: "COLLECTOR_PORT"
-            value: 4002
-          - name: "COLLECTOR_DELEGATE_HOSTNAME"
-            value: 80
-          - name: "COLLECTOR_DELEGATE_PORT"
-            value: 80
+          - name: COLLECTOR_PORT
+            value: "4002"
+          - name: COLLECTOR_DELEGATE_HOSTNAME
+            value: "80"
+          - name: COLLECTOR_DELEGATE_PORT
+            value: "80"
           ports:
           - containerPort: 4002
