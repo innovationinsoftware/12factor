@@ -1,5 +1,4 @@
-FROM node:8.9-alpine
-
+FROM node:15.4.0-alpine3.10
 WORKDIR /app
 COPY package.json /app
 RUN npm install --only-production
