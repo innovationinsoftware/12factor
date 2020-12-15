@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
+#generate the deployment
+for filename in ./manifests/*-deployment.yaml; do
+    kubectl apply -f "$filename"
+done
 
+sleep 5
 
-#update-the-deployments
-for filename in ./manifests/*deployment-update.yaml; do
+#then the services
+for filename in ./manifests/*-service.yaml; do
     kubectl apply -f "$filename"
 done
