@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: collector
-          image:localhost:5000/collector
+          image: localhost:5000/collector
           env:
           - name: COLLECTOR_PORT
             value: "4002"
