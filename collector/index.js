@@ -3,7 +3,7 @@ const uuidv4 = require('uuid/v4');
 
 const {write, read} = require('./datastore')
 
-if(!process.env.COLLECTOR_PORT)throw Error('The required environment variable, COLLECTOR_PORT is not defined.')
+if(!process.env.COLLECTOR_PORT)throw Error('The required environment variable, COLLECTOR_PORT is not defined in collector.')
 const port = process.env.COLLECTOR_PORT;
 
 const app = express();

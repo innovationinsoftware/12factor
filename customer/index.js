@@ -4,8 +4,10 @@ const port = process.env.APP_PORT || 3000;
 const restaurantPort = process.env.RESTAURANT_PORT || 3000;
 
 if(!process.env.RESTAURANT_DNS_NAMES)throw new error('The required environment variable, RESTAURANT_DNS_NAMES is not defined.');
-if(!process.env.COLLECTOR_PORT)throw Error('The required environment variable, COLLECTOR_PORT is not defined.');
-if(!process.env.COLLECTOR_HOSTNAME)throw Error('The required environment variable, COLLECTOR_HOSTNAME is not defined.');
+if(!process.env.COLLECTOR_PORT)throw Error('The required environment variable, COLLECTOR_PORT is not defined in Customer.');
+if(!process.env.COLLECTOR_HOSTNAME)throw Error('The required environment variable, COLLECTOR_HOSTNAME is not defined in Customer.');
+
+
 
 //parse out the services into an array
 const services = process.env.RESTAURANT_DNS_NAMES.split(',');
