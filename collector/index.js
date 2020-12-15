@@ -1,7 +1,7 @@
 const express = require('express');
 const uuidv4 = require('uuid/v4');
 
-const {write, read} = require('./datastore')
+//const {write, read} = require('./datastore')
 
 if(!process.env.COLLECTOR_PORT)throw Error('The required environment variable, COLLECTOR_PORT is not defined in collector.')
 const port = process.env.COLLECTOR_PORT;
@@ -13,6 +13,7 @@ app.use(express.urlencoded({extended:true})); // to support URL-encoded bodies
 
 // POST
 app.post("/", async (request, response) => {
+    /*
     const correlationId = request.header('x-correlation-id') || uuidv4();
     // our unix timestamp
     const unixTimeCreated = new Date().getTime();
@@ -24,16 +25,20 @@ app.post("/", async (request, response) => {
     response.writeHead(200);
     response.end(JSON.stringify(rslt));
     console.log(rslt);
+     */
 })
 
 //GET
 app.get("/", async (request, response) => {
+    /*
     const correlationId = request.header('x-correlation-id') || uuidv4();
     const key = request.query.key
     const rslt = await read(key);
     response.writeHead(200);
     response.end(JSON.stringify(rslt));
     console.log(rslt);
+
+     */
 })
 
 
