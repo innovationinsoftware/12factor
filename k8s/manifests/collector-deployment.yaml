@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collector-deployment
+  labels:
+    app: collector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: collector
+  template:
+    metadata:
+      labels:
+        app: collector
+    spec:
+      containers:
+        - name: collector
+          image:localhost:5000/collector
+          env:
+          - name: COLLECTOR_PORT
+            value: 4002
+          ports:
+            - containerPort: 4002

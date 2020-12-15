@@ -1,0 +1,32 @@
+version: '3'
+services:
+  customer:
+    image: localhost:5000/customer
+    environment:
+      - APP_PORT=3000
+      - RESTAURANT_PORT=3001
+      - RESTAURANT_DNS_NAMES=burgerqueen,hobos,iowafried
+    ports:
+      - "4000:3000"
+    networks:
+      - westfield_mall
+  burgerqueen:
+    environment:
+      - APP_PORT=3001
+    image: localhost:5000/burgerqueen
+    networks:
+      - westfield_mall
+  hobos:
+    image: localhost:5000/hobos
+    environment:
+      - APP_PORT=3001
+    networks:
+      - westfield_mall
+  iowafried:
+    image: localhost:5000/iowafried
+    environment:
+      - APP_PORT=3001
+    networks:
+      - westfield_mall
+networks:
+  westfield_mall:

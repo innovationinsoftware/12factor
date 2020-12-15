@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: burgerqueen
+  labels:
+    app: burgerqueen
+spec:
+  selector:
+    app: burgerqueen
+  ports:
+    -
+      protocol: TCP
+      port: 80
+      targetPort: 3000

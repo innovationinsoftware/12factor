@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hobos
+  labels:
+    app: hobos
+spec:
+  selector:
+    app: hobos
+  ports:
+    -
+      protocol: TCP
+      port: 80
+      targetPort: 3000
