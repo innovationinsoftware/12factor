@@ -20,5 +20,9 @@ spec:
           env:
           - name: COLLECTOR_PORT
             value: 4002
+          - name: COLLECTOR_DELEGATE_HOSTNAME
+            value: 80
+          - name: COLLECTOR_DELEGATE_PORT
+            value: 80
           ports:
-            - containerPort: 4002
+          - containerPort: 4002
