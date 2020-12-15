@@ -26,3 +26,7 @@ spec:
               value: "80"
           ports:
           - containerPort: 3000
+      initContainers:
+        - name: init-myservice
+          image: busybox:1.28
+          command: ['sh', '-c', "until wget  -O- http://collector ; do echo waiting for collector; sleep 2; done"]
