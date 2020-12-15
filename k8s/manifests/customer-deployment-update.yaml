@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-deployment
+  labels:
+    app: customer
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: customer
+  template:
+    metadata:
+      labels:
+        app: customer
+    spec:
+      containers:
+        - name: customer
+          image: localhost:5000/customer
+          env:
+            - name: APP_PORT
+              value: "3000"
+            - name: RESTAURANT_PORT
+              value: "80"
+            - name: RESTAURANT_DNS_NAMES
+              value: "burgerqueen,hobos,iowafried"
+            - name: COLLECTOR_HOSTNAME
+              value: "collector"
+            - name: COLLECTOR_PORT
+              value: "80"
+          ports:
+          - containerPort: 3000
