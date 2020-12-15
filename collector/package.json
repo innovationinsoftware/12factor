@@ -17,6 +17,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^5.1.0",
+    "redis": "^3.0.2",
     "uuid": "^3.3.3"
   }
 }
