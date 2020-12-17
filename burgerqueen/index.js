@@ -1,4 +1,5 @@
 const http = require('http');
+require('dotenv').config()
 const port = process.env.APP_PORT || 3000;
 const {logger} = require('./logger');
 
@@ -12,15 +13,23 @@ const foods = ['burger', 'fries', 'whooper', 'onion rings']
 
 const sample = (items) => {return items[Math.floor(Math.random()*items.length)];};
 
-const shutdown = (signal) => {
+const shutdown = async (signal) => {
+    let shutdownMessage;
+
     if(!signal){
-        console.log(`${restaurant} API Server shutting down at ${new Date()}`);
+        shutdownMessage = (`${restaurant} API Server shutting down at ${new Date()}`);
     }else{
-        console.log(`Signal ${signal} : ${restaurant} API Server shutting down at ${new Date()}`);
+        shutdownMessage = (`Signal ${signal} : ${restaurant} API Server shutting down at ${new Date()}`);
     }
-    server.close(function () {
+    const obj = {status:'OK', shutdownMessage, pid:process.pid};
+    await server.close(function () {
+        console.log(obj);
         process.exit(0);
+    }).catch(err => {
+        console.error(err);
+        return {status:'ERROR',err}
     })
+
 };
 
 const server = http.createServer((request, response) => {
@@ -33,7 +42,7 @@ const server = http.createServer((request, response) => {
     response.writeHead(200);
     response.end(str);
 }).listen(port, (err) => {
-    console.log(`${restaurant} API Server is started on ${port}  at ${new Date()} with pid ${process.pid}`);
+    console.log(`${restaurant}, API Server is started on ${port}  at ${new Date()}, with pid ${process.pid}`);
 });
 
 process.on('SIGTERM', function () {

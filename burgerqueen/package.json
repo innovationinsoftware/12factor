@@ -9,6 +9,7 @@
   "author": "Bob Reselman <reselbob@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "pino": "^6.7.0",
     "pino-http-send": "^0.4.2"
   },
