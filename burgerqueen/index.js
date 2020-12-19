@@ -21,7 +21,7 @@ const shutdown = async (signal) => {
     }else{
         shutdownMessage = (`Signal ${signal} : ${restaurant} API Server shutting down at ${new Date()}`);
     }
-    const obj = {status:'OK', shutdownMessage, pid:process.pid};
+    const obj = {status:'SHUTDOWN', shutdownMessage, pid:process.pid};
     await server.close(function () {
         console.log(obj);
         process.exit(0);
