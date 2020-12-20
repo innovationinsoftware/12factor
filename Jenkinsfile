@@ -2,31 +2,49 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
+        stage('build service') {
             steps {
                 git branch: '10-dev-prod-parity.0.0.1',
                     url: 'https://github.com/innovationinsoftware/12factor.git'
-                sh "cd app"
-                sh "npm install"
+                sh "ls $workspace"
+                dir("$workspace/app") {
+                    sh "pwd"
+                    sh "ls -ls"
+                    sh "npm install"
+                }
             }
         }
-        stage('test') {
+        stage('test service') {
             steps {
-                sh "npm test"
+                dir("$workspace/app") {
+                    sh "npm test"
+                }
             }
         }
-        stage('release') {
+        stage('release service to container repo') {
             steps {
-                sh "docker build -t secretagent:v1 ."
-                sh "docker tag secretagent:v1 localhost:5000/secretagent:v1"
-                sh "docker push localhost:5000/secretagent:v1"
-                echo 'Secret Society V1 is in the localhost registry. You are now ready to run'
+                dir("$workspace/app") {
+                    sh "docker build -t secretagent:v1 ."
+                    sh "docker tag secretagent:v1 localhost:5000/secretagent:v1"
+                    sh "docker push localhost:5000/secretagent:v1"
+                    echo 'Secret Society V2 is in the localhost registry. You are now ready to run'
+                }
             }
-        stage('run') {
+        }
+        stage('provision deployment target') {
             steps {
-                sh "cd .."
-                sh "docker-compose up"
-                sh "wget -O- http://localhost:4000"
+                sh "curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose"
+                sh "chmod +x /usr/local/bin/docker-compose"
+                sh "docker-compose --version"
+            }
+        }
+        stage('run service on deployment target') {
+            steps {
+                sh "which docker-compose"
+                dir("$workspace/app") {
+                    sh "docker-compose up -d"
+                    sh "wget -O- http://localhost:4000"
+                }
             }
         }
     }

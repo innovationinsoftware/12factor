@@ -3,5 +3,5 @@ USER root
 COPY index.js .
 COPY package.json .
 RUN npm install --only-production
-EXPOSE 3050
+EXPOSE 3000
 CMD ["node", "index.js"]
