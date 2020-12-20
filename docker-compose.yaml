@@ -2,7 +2,7 @@ version: '3'
 services:
   secretagent:
     environment:
-      - SECRET_SOCIETY_AGENT=Doctor Evil
+      - SECRET_SOCIETY_AGENT=James Bond:
       - SECRET_SOCIETY_PORT=3000
       - SECRET_SOCIETY_REGION=EU_WEST
     image: localhost:5000/secretagent:v2
