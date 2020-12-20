@@ -1,0 +1,11 @@
+version: '3'
+services:
+  secretagent:
+    environment:
+      - SECRET_SOCIETY_AGENT=Doctor Evil
+      - SECRET_SOCIETY_PORT=3000
+    image: localhost:5000/secretagent:v1
+    ports:
+      - "4000:3000"
+networks:
+  north_america:
