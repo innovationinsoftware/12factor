@@ -1,4 +1,4 @@
-FROM node:8.9-alpine
+FROM node:15.4.0-alpine3.10
 USER root
 COPY index.js .
 COPY package.json .
