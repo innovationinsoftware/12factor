@@ -5,6 +5,7 @@ const faker = require('faker');
 
 const port = process.env.SECRET_SOCIETY_PORT || 3050;
 const agent = process.env.SECRET_SOCIETY_AGENT || 'Unknown';
+const region = process.env.SECRET_SOCIETY_REGION || 'US_WEST';
 
 const getMessage = ()=> {
     const msg = {}
@@ -12,7 +13,7 @@ const getMessage = ()=> {
     msg.secretMessage = faker.lorem.words(5);
     msg.id = uuidv4();
     msg.created = new Date();
-
+    msg.region = region;
     return msg;
 }
 
