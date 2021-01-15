@@ -7,15 +7,15 @@ services:
     networks:
       - westfield_mall
   burgerqueen:
-    image: localhost:5000//burgerqueen
+    image: localhost:5000/burgerqueen
     networks:
       - westfield_mall
   hobos:
-    image: localhost:5000//hobos
+    image: localhost:5000/hobos
     networks:
       - westfield_mall
   iowafried:
-    image: localhost:5000//iowafried
+    image: localhost:5000/iowafried
     networks:
       - westfield_mall
 networks:
