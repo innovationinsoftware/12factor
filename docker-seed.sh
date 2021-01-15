@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Create the local repo
-docker run -d -p 5000:5000 --restart=always --name registry registry:2
+docker run -d --network="host" -p 5000:5000 --restart=always --name registry registry:2
 
 #Create the burgerqueen container image
 cd burgerqueen
