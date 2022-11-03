@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: iowafried
-          image: localhost:5000/iowafried
+          image: aslaen/iowafried
           env:
             - name: APP_PORT
               value: "3000"

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: customer
-          image: localhost:5000/customer
+          image: aslaen/customer
           env:
             - name: APP_PORT
               value: "3000"

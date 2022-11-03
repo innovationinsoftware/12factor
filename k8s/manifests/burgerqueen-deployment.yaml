@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: burgerqueen
-          image: localhost:5000/burgerqueen
+          image: aslaen/burgerqueen
           env:
             - name: APP_PORT
               value: "3000"
